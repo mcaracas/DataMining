@@ -1,0 +1,34 @@
+# Ignore SSIS project deployment files
+*.ispac
+
+# Ignore build output folders
+bin/
+obj/
+
+# Ignore temporary files
+*.tmp
+*.log
+*.cache
+*.user
+
+# Ignore Visual Studio files
+*.suo
+*.vscode/
+.vs/
+
+# Ignore backup and transient files
+*.bak
+*.swp
+
+# Ignore files generated during debugging
+*.mdf
+*.ldf
+
+# Ignore sensitive configuration files (if applicable)
+*.config
+*.publish.xml
+
+# Ignore specific SSIS runtime files
+*.dtproj.user
+*.database
+*.local

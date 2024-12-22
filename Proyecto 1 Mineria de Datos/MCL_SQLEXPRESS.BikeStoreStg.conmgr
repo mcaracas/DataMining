@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MCL_SQLEXPRESS.BikeStoreStg"
+  DTS:DTSID="{9AFF17CE-530A-4CFC-9DD1-36A11B56DE50}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=MCL\SQLEXPRESS;Initial Catalog=BikeStoreStg;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Proyecto 1 Mineria de Datos-{9AFF17CE-530A-4CFC-9DD1-36A11B56DE50}MCL\SQLEXPRESS.BikeStoreStg;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
