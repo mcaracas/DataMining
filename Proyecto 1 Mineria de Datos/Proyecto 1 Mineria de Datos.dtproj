@@ -26,13 +26,15 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MCL</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAXUH0F0ZMEO4MCPHchfrxwAAAAACAAAAAAAQZgAAAAEAACAAAADuTUfpSNbe/dWOSU/vGyi8E8V4MitSmDpdatYnWPYMagAAAAAOgAAAAAIAACAAAAALUwWCqNjR8NURrLq9MBO483PBR8q7waLuhqj2CQOLs5AAAAA6DgY5UJFeG6M+uqPlTaLFNVdFi5g1zWTvmvHPS+So1ZlAZ2TpVMhRC8YhqV9ZuETzuWTd+gH/EUy8Omfazykp1uysUsaVRBaz7mIoOLplXoPj+ZixWhYiHh/tWr3Fdgr68HG5xj4NlCWDMax1Bu8458oblE5L9jwu5y8FMXD2LolC8cyljKSzSiYKv/YhSdlAAAAAT7gsdDNP8GwmXTKemPyotC3vZmr9DdAPlttQDGTIpKU7DxUWpk8/vi/ZSe8NpFywskqe3fx96lnN77O4ynyXKQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAXUH0F0ZMEO4MCPHchfrxwAAAAACAAAAAAAQZgAAAAEAACAAAABQ3NANA3tmYDA6L4YmH3yMFjbD1/kuD1NhNu7feafbJQAAAAAOgAAAAAIAACAAAADzaGjdzw9gzSxXJWk2CXKFIVGzZSUcaTKXIEd7G6rsLZAAAADKwmwdSgWJEHD304lfGrD/A6Qivxt6IOf+KsgzW0wr49PbWcGBEYyo/hS8e2v2RhPm1bExi0w9CHlSlEC43s57jxCOyeDPoV3Po3lbQduS+LNW8tE4JCM8nsGxBtzGtpc2tQq3yb/lqmsoKe2nxhJ/BtsGGTRNqqJoQZH2Zwb1/Te2b5M1KPw+AyWvu5752+RAAAAAtbT1NNXu6mbCKauhpppS8Y+E1QCjO5c0XHdpQ8gMyBJeRr8bBIpJDhdn4qUlfqtm9m1h7J59lFBX21IWKreSxg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Extract Brand.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Extract Categories.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Extract Products.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Package2.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Customers.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MCL_SQLEXPRESS.BikeStoreStg.conmgr" />
@@ -344,10 +346,10 @@
                 <SSIS:Property SSIS:Name="Name">Extract Brand</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FDC91A76-1779-4A97-988B-46D89D1D4B8E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{84534692-7902-4E9A-A21A-1985B6492189}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -378,10 +380,44 @@
                 <SSIS:Property SSIS:Name="Name">Extract Products</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0661AB19-9A8F-4D8E-9F8D-560D91CD0CCF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1BCE60FB-90E7-4726-9C57-2CF896C226E9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Package2.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DE9BD926-3FFB-4097-8270-16FE8F4170DC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CCC067BA-60F2-4F3D-8501-753A9D585640}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Customers.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B46C5361-12FE-4C19-91D6-487E3B826916}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7F36DFF8-FA85-49F7-BA29-C54593D18928}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
