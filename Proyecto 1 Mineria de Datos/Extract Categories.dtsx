@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="12/20/2024 11:37:03 PM"
+  DTS:CreationDate="12/22/2024 8:54:17 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="MCL"
   DTS:CreatorName="MCL\Marcelo"
-  DTS:DTSID="{F2BB5758-757F-43C1-AA72-8BEA52AEDD06}"
+  DTS:DTSID="{9192211E-AB78-4B0C-BF48-A8DDFF803B22}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Extract Brand"
+  DTS:ObjectName="Extract Categories"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{FDC91A76-1779-4A97-988B-46D89D1D4B8E}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{B24DBFB9-61EA-44AD-A03F-810EF37A4E64}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Borrar Tabla"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{70521BDC-1BE6-4102-AF80-CB368C86B308}"
+      DTS:DTSID="{8D486031-9E77-48E9-A275-4C5E3D2B82D4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Borrar Tabla"
@@ -31,31 +31,31 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9AFF17CE-530A-4CFC-9DD1-36A11B56DE50}"
-          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS production.brands;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS production.categories;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Crear Tabla"
+      DTS:refId="Package\Crear tabla"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{91256FB1-1AD6-496D-8C9B-5708787B6169}"
+      DTS:DTSID="{70F517A0-9C85-4802-A30C-FAFA9B6B70B8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Crear Tabla"
+      DTS:ObjectName="Crear tabla"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9AFF17CE-530A-4CFC-9DD1-36A11B56DE50}"
-          SQLTask:SqlStatementSource="CREATE TABLE [production].[brands](&#xA;&#x9;[brand_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,&#xA;&#x9;[brand_name] [varchar](255) NOT NULL);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- create tables&#xA;CREATE TABLE production.categories (&#xA;&#x9;category_id INT IDENTITY (1, 1) PRIMARY KEY,&#xA;&#x9;category_name VARCHAR (255) NOT NULL&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{E8ACB4B6-645B-410B-B4C4-177D4065428B}"
+      DTS:DTSID="{76CACE40-B47C-4449-A20C-BF78CD99E3B7}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -66,11 +66,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Copiar Datos"
+              refId="Package\Data Flow Task\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Copiar Datos"
+              name="OLE DB Destination"
               usesDispositions="true"
               version="4">
               <properties>
@@ -81,7 +81,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[production].[brands]</property>
+                  name="OpenRowset">[production].[categories]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -123,7 +123,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Copiar Datos.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
                   connectionManagerID="{9AFF17CE-530A-4CFC-9DD1-36A11B56DE50}:external"
                   connectionManagerRefId="Project.ConnectionManagers[MCL_SQLEXPRESS.BikeStoreStg]"
                   description="The OLE DB runtime connection used to access the database."
@@ -131,54 +131,54 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="IgnoreFailure"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input].Columns[brand_name]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[category_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
-                      cachedName="brand_name"
-                      externalMetadataColumnId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input].ExternalColumns[brand_name]"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].Columns[brand_name]" />
+                      cachedName="category_name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input].ExternalColumns[brand_id]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_id]"
                       dataType="i4"
-                      name="brand_id" />
+                      name="category_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input].ExternalColumns[brand_name]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      name="brand_name" />
+                      name="category_name" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Copiar Datos.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Copiar Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Copiar Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Copiar Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Copiar Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -187,11 +187,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Extraer Datos"
+              refId="Package\Data Flow Task\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Extraer Datos"
+              name="OLE DB Source"
               usesDispositions="true"
               version="7">
               <properties>
@@ -202,7 +202,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[production].[brands]</property>
+                  name="OpenRowset">[production].[categories]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -236,7 +236,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Extraer Datos.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="{B5C8257D-B6A7-4A1A-B7BC-B8B2609C9935}:external"
                   connectionManagerRefId="Project.ConnectionManagers[MCL_SQLEXPRESS.BikeStore]"
                   description="The OLE DB runtime connection used to access the database."
@@ -244,71 +244,71 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output]"
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].Columns[brand_id]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].ExternalColumns[brand_id]"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].Columns[brand_id]"
-                      name="brand_id"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_id]"
+                      name="category_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].Columns[brand_name]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].ExternalColumns[brand_name]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].Columns[brand_name]"
-                      name="brand_name"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
+                      name="category_name"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].ExternalColumns[brand_id]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
                       dataType="i4"
-                      name="brand_id" />
+                      name="category_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output].ExternalColumns[brand_name]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      name="brand_name" />
+                      name="category_name" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[brand_id]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[brand_id]"
-                      name="brand_id" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_id]"
+                      name="category_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[brand_name]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[brand_name]"
-                      name="brand_name" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      name="category_name" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -320,9 +320,9 @@
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Copiar Datos.Inputs[OLE DB Destination Input]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Extraer Datos.Outputs[OLE DB Source Output]" />
+              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -332,16 +332,16 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{ACD1FE10-E10E-45EE-8CC1-2600D5AAC1FA}"
+      DTS:DTSID="{178DC65F-C9CD-4207-9CA4-6DD8270DAB3B}"
       DTS:From="Package\Borrar Tabla"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Crear Tabla" />
+      DTS:To="Package\Crear tabla" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{5BF93B4D-8E0D-48B0-AA15-7B41BFB0E146}"
-      DTS:From="Package\Crear Tabla"
+      DTS:DTSID="{098B7AE0-3E10-4CCF-8959-C4A281123A9F}"
+      DTS:From="Package\Crear tabla"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Data Flow Task" />
@@ -361,29 +361,25 @@
         <NodeLayout
           Size="139.333333333334,42.6666666666667"
           Id="Package\Borrar Tabla"
-          TopLeft="316.874985834584,64.9999992863129" />
+          TopLeft="248.124988907949,45.8421047598206" />
         <NodeLayout
-          Size="136,42.6666666666667"
-          Id="Package\Crear Tabla"
-          TopLeft="317.65623579966,161.131577178176" />
-        <NodeLayout
-          Size="153.333333333334,42.6666666666667"
-          Id="Package\Data Flow Task"
-          TopLeft="310.937486100011,254.013155105722" />
+          Size="146,42"
+          Id="Package\Crear tabla"
+          TopLeft="248.124988907948,129.315788053822" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="386.098944150455,107.66666595298">
+          TopLeft="319.458322241282,88.5087714264873">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.4649112251963"
+              EndConnector="0,40.807016627335"
               Start="0,0"
-              End="0,45.9649112251963">
+              End="0,33.307016627335">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.9649112251963" />
+                    End="0,33.307016627335" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -392,20 +388,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task"
+          TopLeft="248.749988880009,214.842102904234" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="386.630194283169,203.798243844843">
+          TopLeft="323.270822227312,171.315788053822">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.2149112608799"
+              EndConnector="0,43.5263148504117"
               Start="0,0"
-              End="0,42.7149112608799">
+              End="0,36.0263148504117">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.7149112608799" />
+                    End="0,36.0263148504117" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -423,39 +423,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
-          Id="Package\Data Flow Task\Extraer Datos"
-          TopLeft="108.124995166436,36.2631574965745" />
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="311.999990701676,56.9999983012677" />
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Data Flow Task\Copiar Datos"
-          TopLeft="299.999986588955,190.210524227315" />
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="436.999986976386,181.999994575977" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="180.791661833103,78.9298241632412">
+          TopLeft="389.333324035009,99.6666649679343">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189.874991422519,111.280700064074"
+              EndConnector="134.99999627471,82.3333296080431"
               Start="0,0"
-              End="189.874991422519,103.780700064074">
+              End="134.99999627471,74.8333296080431">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.6403500320371" />
+                    End="0,37.1666648040216" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,51.6403500320371"
-                    Point2="0,55.6403500320371"
-                    Point3="4,55.6403500320371" />
+                    Point1="0,37.1666648040216"
+                    Point2="0,41.1666648040216"
+                    Point3="4,41.1666648040216" />
                   <mssgle:LineSegment
-                    End="185.874991422519,55.6403500320371" />
+                    End="130.99999627471,41.1666648040216" />
                   <mssgle:CubicBezierSegment
-                    Point1="185.874991422519,55.6403500320371"
-                    Point2="189.874991422519,55.6403500320371"
-                    Point3="189.874991422519,59.6403500320371" />
+                    Point1="130.99999627471,41.1666648040216"
+                    Point2="134.99999627471,41.1666648040216"
+                    Point3="134.99999627471,45.1666648040216" />
                   <mssgle:LineSegment
-                    End="189.874991422519,103.780700064074" />
+                    End="134.99999627471,74.8333296080431" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -468,7 +468,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Copiar Datos">
+    design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -481,7 +481,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Extraer Datos">
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
