@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Orquestador"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{34746F27-10EB-4C3D-9B18-B8C4DB4DEF2D}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{F9150EF4-0A9B-4C58-8B12-A32E4836B56B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -193,56 +193,56 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 1]"
           DTS:CreationName=""
-          DTS:DTSID="{D6855E6E-FC22-4B1E-BFC9-FE6F60FABC7D}"
+          DTS:DTSID="{593B97C5-F064-4E4B-B963-A74F8B6FD61C}"
           DTS:From="Package\Extract\Extract Categories"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 1"
-          DTS:To="Package\Extract\Extract Customers" />
+          DTS:To="Package\Extract\Extract Products" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 2]"
           DTS:CreationName=""
-          DTS:DTSID="{D1A62D2E-049B-4569-A3C6-F02E683363EE}"
-          DTS:From="Package\Extract\Extract Customers"
+          DTS:DTSID="{EA0FE13A-4F14-478E-8390-89A18E3F0FEC}"
+          DTS:From="Package\Extract\Extract Products"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 2"
-          DTS:To="Package\Extract\Extract Products" />
+          DTS:To="Package\Extract\Extract Customers" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 3]"
           DTS:CreationName=""
-          DTS:DTSID="{080286F5-0E2F-47A0-ABED-B8168430C650}"
-          DTS:From="Package\Extract\Extract Products"
+          DTS:DTSID="{FFCE433C-817A-4C66-A142-9C4A2B4D1CBB}"
+          DTS:From="Package\Extract\Extract Customers"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 3"
-          DTS:To="Package\Extract\Extract Staffs" />
+          DTS:To="Package\Extract\Extract Stores" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 4]"
           DTS:CreationName=""
-          DTS:DTSID="{8938D5A6-2FF5-4A65-9FAE-96CE78DFB8ED}"
-          DTS:From="Package\Extract\Extract Staffs"
+          DTS:DTSID="{D02C907B-FF1E-4927-B3ED-039DAB70FE06}"
+          DTS:From="Package\Extract\Extract Stores"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 4"
-          DTS:To="Package\Extract\Extract OrderItems" />
+          DTS:To="Package\Extract\Extract Staffs" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 5]"
           DTS:CreationName=""
-          DTS:DTSID="{88AD40D6-B4AA-4D2B-9B56-6C72438987DE}"
-          DTS:From="Package\Extract\Extract OrderItems"
+          DTS:DTSID="{BCB9D419-0640-40F4-BE3D-8D2E1AA1FA48}"
+          DTS:From="Package\Extract\Extract Staffs"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 5"
-          DTS:To="Package\Extract\Extract Stocks" />
+          DTS:To="Package\Extract\Extract OrderItems" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 6]"
           DTS:CreationName=""
-          DTS:DTSID="{82EA0AFC-417A-4F43-8B84-AE88927541DA}"
-          DTS:From="Package\Extract\Extract Stocks"
+          DTS:DTSID="{CAE47090-1781-4784-BA7F-B57B1048E6BA}"
+          DTS:From="Package\Extract\Extract OrderItems"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 6"
-          DTS:To="Package\Extract\Extract Stores" />
+          DTS:To="Package\Extract\Extract Stocks" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Extract.PrecedenceConstraints[Restricción 7]"
           DTS:CreationName=""
-          DTS:DTSID="{8FD99C11-2136-4D76-AEF2-E4DF1957AC73}"
-          DTS:From="Package\Extract\Extract Stores"
+          DTS:DTSID="{3A1C4B5C-CBE7-4E24-85EE-BDD65C985A2E}"
+          DTS:From="Package\Extract\Extract Stocks"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 7"
           DTS:To="Package\Extract\Extract Orders" />
@@ -262,41 +262,41 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="169,42"
-          Id="Package\Extract\Extract Categories"
-          TopLeft="6.50000000000001,107.5" />
-        <NodeLayout
           Size="146,42"
           Id="Package\Extract\Extract Brand"
           TopLeft="18,5.5" />
         <NodeLayout
           Size="169,42"
+          Id="Package\Extract\Extract Categories"
+          TopLeft="6.50000000000001,107.5" />
+        <NodeLayout
+          Size="169,42"
           Id="Package\Extract\Extract Customers"
-          TopLeft="6.50000000000003,209.5" />
+          TopLeft="6.50000000000004,311.5" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\Extract\Extract Products"
-          TopLeft="11,311.5" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Extract\Extract Staffs"
-          TopLeft="19.0000000000001,413.5" />
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Extract\Extract Stocks"
-          TopLeft="16.5000000000001,617.5" />
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Extract\Extract Stores"
-          TopLeft="17.0000000000001,719.5" />
+          Size="171,42"
+          Id="Package\Extract\Extract OrderItems"
+          TopLeft="5.50000000000009,617.5" />
         <NodeLayout
           Size="150,42"
           Id="Package\Extract\Extract Orders"
           TopLeft="16.0000000000001,821.5" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Extract\Extract OrderItems"
-          TopLeft="5.50000000000007,515.5" />
+          Size="160,42"
+          Id="Package\Extract\Extract Products"
+          TopLeft="11,209.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Extract\Extract Staffs"
+          TopLeft="19.0000000000001,515.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Extract\Extract Stocks"
+          TopLeft="16.5000000000001,719.5" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Extract\Extract Stores"
+          TopLeft="17.0000000000001,413.5" />
         <EdgeLayout
           Id="Package\Extract.PrecedenceConstraints[Restricción]"
           TopLeft="91,47.5">
@@ -476,7 +476,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="182,919"
+          PanelSize="182,918"
           Size="182,962"
           Id="Package\Extract"
           TopLeft="221,59" />
